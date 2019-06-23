@@ -7,7 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/black"
-        tools:context=".NewTimer"
+        tools:context=".EditTimerInfo"
 >
 
     <LinearLayout
@@ -15,10 +15,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
         <TextView
-                android:id="@+id/new_timer_create_page"
+                android:id="@+id/new_timer_edit_page"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/create_new_timer"
+                android:text="@string/edit_timer_label"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -32,7 +32,7 @@
                 android:orientation="horizontal">
 
             <TextView
-                    android:id="@+id/timer_name_label"
+                    android:id="@+id/timer_name_edit_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -42,7 +42,7 @@
                     android:textStyle="bold"/>
 
             <EditText
-                    android:id="@+id/timer_name_form"
+                    android:id="@+id/timer_name_edit_form"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
             <TextView
-                    android:id="@+id/working_time_label"
+                    android:id="@+id/working_time_edit_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/working_time_per_set"
@@ -68,7 +68,7 @@
                     android:textSize="30sp"
                     android:textStyle="bold"/>
             <EditText
-                    android:id="@+id/set_time_form"
+                    android:id="@+id/working_time_edit_form"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
             <TextView
-                    android:id="@+id/rest_time_label"
+                    android:id="@+id/rest_time_edit_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/rest_time"
@@ -92,7 +92,7 @@
                     android:textSize="30sp"
                     android:textStyle="bold"/>
             <EditText
-                    android:id="@+id/rest_time_form"
+                    android:id="@+id/rest_time_edit_form"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
             <TextView
-                    android:id="@+id/set_number_label"
+                    android:id="@+id/set_number_edit_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/number_of_sets"
@@ -117,7 +117,7 @@
                     android:textSize="30sp"
                     android:textStyle="bold"/>
             <EditText
-                    android:id="@+id/set_number_form"
+                    android:id="@+id/set_number_edit_form"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -135,24 +135,24 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true">
-    <Button
-            android:id="@+id/create_timer_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/create_timer"
-            android:textSize="30sp"
-            android:onClick="saveNewTimer"
+        <Button
+                android:id="@+id/edit_timer_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_timer"
+                android:textSize="30sp"
+                android:onClick="saveEditTimer"
 
-    />
+        />
 
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/timer_cancel_button"
-            android:text="@string/cancel_button"
-            android:textSize="30sp"
-            android:onClick="cancelCreateTimer"
-    />
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cancel_timer_button"
+                android:text="@string/cancel_button"
+                android:textSize="30sp"
+                android:onClick="cancelEditTimer"
+        />
     </LinearLayout>
 
 </RelativeLayout>
