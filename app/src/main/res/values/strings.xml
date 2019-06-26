@@ -7,7 +7,7 @@
     <string name="new_timer">New Timer</string>
     <string name="timers">Timers</string>
     <string name="create_timer">Create</string>
-    <string name="working_time_per_set">Working time per set</string>
+    <string name="working_time_per_set">Working time</string>
     <string name="title_activity_timer">TimerActivity</string>
     <string name="cancel_button">Cancel</string>
     <string name="edit_char_info">Edit</string>

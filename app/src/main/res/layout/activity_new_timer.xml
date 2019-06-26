@@ -135,24 +135,24 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true">
-    <Button
-            android:id="@+id/create_timer_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/create_timer"
-            android:textSize="30sp"
-            android:onClick="saveNewTimer"
+        <Button
+                android:id="@+id/create_timer_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/create_timer"
+                android:textSize="30sp"
+                android:onClick="saveNewTimer"
 
-    />
+        />
 
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/timer_cancel_button"
-            android:text="@string/cancel_button"
-            android:textSize="30sp"
-            android:onClick="cancelCreateTimer"
-    />
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/timer_cancel_button"
+                android:text="@string/cancel_button"
+                android:textSize="30sp"
+                android:onClick="cancelCreateTimer"
+        />
     </LinearLayout>
 
 </RelativeLayout>

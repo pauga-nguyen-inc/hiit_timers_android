@@ -30,7 +30,6 @@ class TimerInfo : AppCompatActivity() {
     }
 
     fun doneTimerInfo (view: View) {
-        val doneButton = Intent()
         setResult(Activity.RESULT_CANCELED)
         finish()
     }
