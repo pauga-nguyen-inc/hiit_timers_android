@@ -8,9 +8,11 @@ import android.view.View
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_edit_timer_info.*
 import kotlinx.android.synthetic.main.activity_new_timer.*
+import kotlinx.android.synthetic.main.activity_timer_info.*
 
 class EditTimerInfo : AppCompatActivity() {
 
+    var info = Timer::class.java.newInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_timer_info)
@@ -20,9 +22,10 @@ class EditTimerInfo : AppCompatActivity() {
     fun saveEditTimer(view: View){
         var timer = Timer::class.java.newInstance()
         timer.setName(timer_name_edit_form.text.toString())
-        timer.setWorkingTime(working_time_edit_form.text.toString().toInt())
-        timer.setRestTime(rest_time_edit_form.text.toString().toInt())
-        timer.setWorkingTime(set_number_edit_form.text.toString().toInt())
+        timer.setSetNumber(working_time_edit_form.text.toString().toInt())
+        timer.setWorkingTime(display_working_time.text.toString())
+        timer.setRestTime(display_rest_time.text.toString())
+
         sendTimer(view, timer)
     }
 
@@ -36,9 +39,9 @@ class EditTimerInfo : AppCompatActivity() {
         if (info != null){
             val timer = info.getSerializable("timer") as Timer
             timer_name_edit_form.setText(timer.getName(), TextView.BufferType.EDITABLE)
-            working_time_edit_form.setText(timer.getWorkingTime(), TextView.BufferType.EDITABLE)
-            rest_time_edit_form.setText(timer.getRestTime(), TextView.BufferType.EDITABLE)
             set_number_edit_form.setText(timer.getSetNumber(), TextView.BufferType.EDITABLE)
+            display_working_time.setText(timer.getWorkingTime(), TextView.BufferType.EDITABLE)
+            display_rest_time.setText(timer.getRestTime(), TextView.BufferType.EDITABLE)
         }
     }
 
@@ -47,4 +50,5 @@ class EditTimerInfo : AppCompatActivity() {
         intent.putExtra("EditTimer", timer)
         finish()
     }
+
 }

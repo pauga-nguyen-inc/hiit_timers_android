@@ -12,12 +12,13 @@ import kotlin.concurrent.timer
 import kotlin.math.min
 
 class NewTimer : AppCompatActivity() {
+    val arrayOfTimes = Array<Int>(60, {it + 1})
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_timer)
 
-       // numPicker()
+        numPicker()
     }
 
     fun cancelCreateTimer(view : View){
@@ -27,10 +28,15 @@ class NewTimer : AppCompatActivity() {
 
     fun saveNewTimer(view : View){
         var timer = Timer::class.java.newInstance()
+        val dispWorkTime = findViewById<TextView>(R.id.display_working_time)
+        val dispRestTime = findViewById<TextView>(R.id.display_rest_time)
+  //      val restTime = Integer.parseInt(dispRestTime.toString())
+
         timer.setName(timer_name_form.text.toString())
-        //timer.setRestTime(rest_time_form.text.toString().toInt())
-        //timer.setWorkingTime(set_time_form.text.toString().toInt())
         timer.setSetNumber(set_number_form.text.toString().toInt())
+        timer.setWorkingTime(dispWorkTime.text.toString())
+        timer.setRestTime(dispRestTime.text.toString())
+
 
         sendTimer(view, timer)
 
@@ -43,7 +49,7 @@ class NewTimer : AppCompatActivity() {
         finish()
     }
 
-    /*fun numPicker(){
+    fun numPicker(){
         val wminutePicker = findViewById<NumberPicker>(R.id.set_time_form)
         val wsecondPicker = findViewById<NumberPicker>(R.id.set_time_seconds_form)
 
@@ -56,7 +62,7 @@ class NewTimer : AppCompatActivity() {
             wminutePicker.wrapSelectorWheel = true
             wminutePicker.setOnValueChangedListener( {picker, oldVal, newVal ->
                 val text = findViewById<TextView>(R.id.display_working_time)
-                text.text = "$newVal"
+                text.setText("$newVal:" + "%02d".format(wsecondPicker.value))
             } )
         }
 
@@ -66,7 +72,7 @@ class NewTimer : AppCompatActivity() {
             wsecondPicker.wrapSelectorWheel = true
             wsecondPicker.setOnValueChangedListener( {picker, oldVal, newVal ->
                 val text = findViewById<TextView>(R.id.display_working_time)
-                text.setText("${wminutePicker.value}:" + newVal)
+                text.setText("${wminutePicker.value}:" + "%02d".format(newVal))
             } )
         }
 
@@ -75,8 +81,8 @@ class NewTimer : AppCompatActivity() {
             rminutePicker.maxValue = 59
             rminutePicker.wrapSelectorWheel = true
             rminutePicker.setOnValueChangedListener( {picker, oldVal, newVal ->
-                val text = findViewById<TextView>(R.id.display_working_time)
-                text.text = "$newVal"
+                val text = findViewById<TextView>(R.id.display_rest_time)
+                text.setText("$newVal:" + "%02d".format(rsecondPicker.value))
             } )
         }
 
@@ -85,10 +91,12 @@ class NewTimer : AppCompatActivity() {
             rsecondPicker.maxValue = 59
             rsecondPicker.wrapSelectorWheel = true
             rsecondPicker.setOnValueChangedListener( {picker, oldVal, newVal ->
-                val text = findViewById<TextView>(R.id.display_working_time)
-                text.text = "$newVal"
+                val text = findViewById<TextView>(R.id.display_rest_time)
+                text.setText("${rminutePicker.value}:" + "%02d".format(newVal))
             } )
         }
+
+
+
     }
-    */
 }

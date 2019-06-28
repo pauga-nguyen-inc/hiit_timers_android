@@ -10,13 +10,18 @@
         tools:context=".MainActivity"
 >
 
-    <LinearLayout
-            android:id="@+id/linear_layout"
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_marginBottom="75dp">
+        <LinearLayout
+                android:id="@+id/linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+        </LinearLayout>
+    </ScrollView>
 
     <Button
             android:id="@+id/new_timer_create_button"

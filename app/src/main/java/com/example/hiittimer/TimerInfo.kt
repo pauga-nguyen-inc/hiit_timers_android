@@ -24,7 +24,7 @@ class TimerInfo : AppCompatActivity() {
         super.onResume()
     }
     fun editTimerInfo (view: View){
-        val editButton = Intent(this, NewTimer::class.java)
+        val editButton = Intent(this, EditTimerInfo::class.java)
         editButton.putExtra("timer", timer)
         startActivityForResult(editButton,1)
     }
@@ -36,13 +36,12 @@ class TimerInfo : AppCompatActivity() {
 
     fun handleTimerIntent(){
         val info = intent.extras
-
         if (info != null){
             timer = info.getSerializable("timer") as Timer
             timer_name_info.text = timer.getName()
-            working_time_info.text = timer.getWorkingTime().toString()
-            rest_time_info.text = timer.getRestTime().toString()
             set_number_info.text = timer.getSetNumber().toString()
+            working_time_info.text = timer.getWorkingTime()
+            rest_time_info.text = timer.getRestTime()
         }
     }
 
@@ -56,9 +55,10 @@ class TimerInfo : AppCompatActivity() {
 
     fun newTimer(timer: Timer){
         timer_name_info.text = timer.getName()
-        working_time_info.text = timer.getWorkingTime().toString()
-        rest_time_info.text = timer.getRestTime().toString()
         set_number_info.text = timer.getSetNumber().toString()
+        working_time_info.text = timer.getWorkingTime()
+        rest_time_info.text = timer.getRestTime()
+
     }
 
 }
