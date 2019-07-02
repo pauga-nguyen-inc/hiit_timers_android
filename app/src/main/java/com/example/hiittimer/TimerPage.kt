@@ -24,6 +24,7 @@ class TimerPage : AppCompatActivity() {
         setContentView(R.layout.activity_timer_page)
         //------------------------------------------------------------------
 
+
         var min  = 0
         var sec  = 0
         var arr = emptyList<String>()
@@ -39,8 +40,6 @@ class TimerPage : AppCompatActivity() {
 
         //-------------------------------------------------------------
         val millisInFuture:Long = (min.toLong() * 60)*1000 + (sec * 1000)
-        val minutes = TimeUnit.MILLISECONDS.toMinutes(millisInFuture)
-        val seconds = TimeUnit.MILLISECONDS.toSeconds(millisInFuture)
         val countDownInterval:Long = 1000
 
 
@@ -55,12 +54,9 @@ class TimerPage : AppCompatActivity() {
             isCancelled = false
             isPaused = false
 
-            Toast.makeText(this, "${millisInFuture}", Toast.LENGTH_SHORT ).show()
-
-
+            //Toast.makeText(this, "${millisInFuture}", Toast.LENGTH_SHORT ).show()
 
         }
-
 
         // Count down timer stop/cancel button
         button_stop.setOnClickListener{
@@ -105,9 +101,26 @@ class TimerPage : AppCompatActivity() {
 
     // Method to configure and return an instance of CountDownTimer object
     private fun timer(millisInFuture:Long,countDownInterval:Long):CountDownTimer{
-        return object: CountDownTimer(millisInFuture,countDownInterval){
+         return object: CountDownTimer(millisInFuture,countDownInterval){
             override fun onTick(millisUntilFinished: Long){
-                val timeRemaining = "Seconds remaining\n${millisUntilFinished/1000}"
+
+                val timeRemaining = "${(millisUntilFinished / 1000 / 60)}:" +
+                        "${(millisUntilFinished / 1000 % 60).toString().padStart(2, '0')} "
+
+                Toast.makeText(this@TimerPage, "${timeRemaining}", Toast.LENGTH_SHORT ).show()
+
+
+                if (timeRemaining == "0:00")
+
+//                if (millisInFuture !== 0L){
+//                    var i = 0
+//                    if(i <=timer.getSetNumber().toString().toInt()){
+//                        timer(millisInFuture,countDownInterval).start()
+//                        Toast.makeText(this@TimerPage, "${i}", Toast.LENGTH_SHORT ).show()
+//                        text_view_set_number.text = i.toString()
+//                    }
+//                }
+
 
                 if (isPaused){
                     text_view.text = "${text_view.text}\nPaused"
@@ -123,8 +136,12 @@ class TimerPage : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                text_view.text = "Done"
-            }
+//                var i = 1
+//                while (i < timer.getSetNumber().toString().toInt()){
+//                    text_view_set_number.text = i.toString()
+//                }
+
+           }
         }
 
     }
