@@ -106,6 +106,12 @@ class TimerPage : AppCompatActivity() {
 
                 val timeRemaining = "${(millisUntilFinished / 1000 / 60)}:" +
                         "${(millisUntilFinished / 1000 % 60).toString().padStart(2, '0')} "
+                var array = timeRemaining.split(":")
+                var rsec = Integer.parseInt(array[0])
+                var rmin = Integer.parseInt(array[1])
+                if ((rmin.toLong() * 60)*1000 + (rsec * 1000) == 0L){
+                    timer(millisInFuture,countDownInterval).start()
+                }
 
                 Toast.makeText(this@TimerPage, "${timeRemaining}", Toast.LENGTH_SHORT ).show()
 
