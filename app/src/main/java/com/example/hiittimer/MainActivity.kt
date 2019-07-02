@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
                 cardView.layoutParams = params
                 cardView.cardElevation = 30f
 
-                view.text = "${timers.getName()}, \nSet Number: ${timers.getSetNumber()}, \nWorking Time: ${timers.getWorkingTime()}," +
+                view.text = "${timers.getName()} \nSet Number: ${timers.getSetNumber()} \nWorking Time: ${timers.getWorkingTime()}" +
                         "\nRest Time: ${timers.getRestTime()}"
                 view.textSize = 24f
                 view.setTextColor(Color.WHITE)
