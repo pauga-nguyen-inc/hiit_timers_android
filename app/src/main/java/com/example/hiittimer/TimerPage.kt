@@ -39,7 +39,7 @@ class TimerPage : AppCompatActivity() {
 
 
         //-------------------------------------------------------------
-        val millisInFuture:Long = (min.toLong() * 60)*1000 + (sec * 1000)
+        val millisInFuture:Long = (min.toLong() * 60)*1000 + (sec * 1000) + 1000
         val countDownInterval:Long = 1000
 
 
@@ -106,17 +106,25 @@ class TimerPage : AppCompatActivity() {
 
                 val timeRemaining = "${(millisUntilFinished / 1000 / 60)}:" +
                         "${(millisUntilFinished / 1000 % 60).toString().padStart(2, '0')} "
+
                 var array = timeRemaining.split(":")
                 var rsec = Integer.parseInt(array[0])
-                var rmin = Integer.parseInt(array[1])
+                var rmin = Integer.parseInt(array[1].trim())
+
                 if ((rmin.toLong() * 60)*1000 + (rsec * 1000) == 0L){
-                    timer(millisInFuture,countDownInterval).start()
+                    var i = 1
+                    while (i <= timer.getSetNumber().toString().toInt()) {
+                        timer(millisInFuture, countDownInterval).start()
+                        i++
+                        text_view_set_number.text = i.toString()
+                        Toast.makeText(this@TimerPage, "${text_view_set_number.text}", Toast.LENGTH_SHORT ).show()
+
+                    }
                 }
 
-                Toast.makeText(this@TimerPage, "${timeRemaining}", Toast.LENGTH_SHORT ).show()
 
 
-                if (timeRemaining == "0:00")
+//                if (timeRemaining == "0:00")
 
 //                if (millisInFuture !== 0L){
 //                    var i = 0

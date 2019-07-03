@@ -158,8 +158,8 @@ class MainActivity : AppCompatActivity() {
         val file = File(filesDir, timer.getName())
         if(!file.exists()){
             val out = file.printWriter()
-            out.print("${timer.getName()}, ${timer.getWorkingTime()}, " +
-                    "${timer.getRestTime()}, ${timer.getSetNumber()} ")
+            out.print("${timer.getName()},${timer.getWorkingTime()}," +
+                    "${timer.getRestTime()},${timer.getSetNumber()}")
             out.close()
         }
     }

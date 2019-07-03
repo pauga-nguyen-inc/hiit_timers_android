@@ -30,7 +30,6 @@ class NewTimer : AppCompatActivity() {
         var timer = Timer::class.java.newInstance()
         val dispWorkTime = findViewById<TextView>(R.id.display_working_time)
         val dispRestTime = findViewById<TextView>(R.id.display_rest_time)
-  //      val restTime = Integer.parseInt(dispRestTime.toString())
 
         timer.setName(timer_name_form.text.toString())
         timer.setSetNumber(set_number_form.text.toString().toInt())
