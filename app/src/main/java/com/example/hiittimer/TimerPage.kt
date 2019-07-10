@@ -99,7 +99,6 @@ class TimerPage : AppCompatActivity() {
 
 
 
-    // Method to configure and return an instance of CountDownTimer object
     private fun timer(millisInFuture:Long,countDownInterval:Long):CountDownTimer{
          return object: CountDownTimer(millisInFuture,countDownInterval){
             override fun onTick(millisUntilFinished: Long){
@@ -124,16 +123,15 @@ class TimerPage : AppCompatActivity() {
 
 
 
-//                if (timeRemaining == "0:00")
+                var i = 0
+                if ((rmin.toLong() * 60)*1000 + (rsec * 1000) == 0L){
+                    while (i <= timer.getSetNumber().toString().toInt()) {
+                        Toast.makeText(this@TimerPage, "${i}", Toast.LENGTH_SHORT).show()
+                        val newSet = i++
+                        text_view_set_number.text = newSet.toString()
 
-//                if (millisInFuture !== 0L){
-//                    var i = 0
-//                    if(i <=timer.getSetNumber().toString().toInt()){
-//                        timer(millisInFuture,countDownInterval).start()
-//                        Toast.makeText(this@TimerPage, "${i}", Toast.LENGTH_SHORT ).show()
-//                        text_view_set_number.text = i.toString()
-//                    }
-//                }
+                    }
+                }
 
 
                 if (isPaused){

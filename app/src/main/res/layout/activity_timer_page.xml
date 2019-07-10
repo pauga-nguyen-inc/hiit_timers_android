@@ -26,6 +26,7 @@
                 android:id="@+id/button_stop"
                 android:text="Stop"
                 android:layout_width="0dp"
+                android:text="Stop"
                 android:layout_height="wrap_content"
                 android:layout_weight=".25"
         />
