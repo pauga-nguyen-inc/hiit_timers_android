@@ -6,11 +6,11 @@
         android:id="@+id/relativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@color/white"
         tools:context=".NewTimer"
 >
     <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -26,54 +26,39 @@
                     android:layout_height="wrap_content"
                     android:text="@string/create_new_timer"
                     android:textAlignment="center"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="30sp"
                     android:textStyle="bold"/>
         </LinearLayout>
         <ScrollView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="75dp">
             <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                        <LinearLayout
-                                android:layout_width="wrap_content"
+                        <EditText
+                                android:id="@+id/timer_name_form"
+                                android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_marginTop="10sp">
-
-                            <TextView
-                                    android:id="@+id/timer_name_label"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="start"
-                                    android:textColor="@color/white"
-                                    android:text="@string/timer_name"
-                                    android:textSize="30sp"
-                                    android:textStyle="bold"/>
-
-                            <EditText
-                                    android:id="@+id/timer_name_form"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:ems="10"
-                                    android:textSize="30sp"
-                                    android:gravity="center"
-                                    android:inputType="text"
-                                    android:textStyle="bold"
-                                    android:text=""
-                                    android:textColor="@color/white"
-                                    android:textAlignment="center"/>
-                        </LinearLayout>
+                                android:ems="10"
+                                android:textSize="30sp"
+                                android:gravity="center"
+                                android:layout_gravity="center_horizontal"
+                                android:backgroundTint="@color/grey"
+                                android:inputType="text"
+                                android:textStyle="bold"
+                                android:text="Name"
+                                android:textColor="@color/black"
+                                android:textAlignment="center"/>
                         <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
                                 android:layout_marginTop="10sp"
@@ -81,21 +66,24 @@
                                 android:layout_gravity="center_horizontal">
                             <TextView
                                     android:id="@+id/set_number_label"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="wrap_content"
                                     android:text="@string/number_of_sets"
-                                    android:textColor="@color/white"
-                                    android:textSize="30sp"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp"
                                     android:textStyle="bold"/>
                             <EditText
                                     android:id="@+id/set_number_form"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="wrap_content"
-                                    android:ems="6"
+                                    android:ems="15"
                                     android:textStyle="bold"
+                                    android:backgroundTint="@color/grey"
                                     android:textSize="30sp"
                                     android:inputType="number"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/black"
                                     android:text=""
                                     android:textAlignment="center"/>
                         </LinearLayout>
@@ -114,8 +102,9 @@
                                 android:layout_height="wrap_content"
                                 android:textAlignment="center"
                                 android:text="@string/working_time_per_set"
-                                android:textColor="@color/white"
-                                android:textSize="30sp"
+                                android:textColor="@color/black"
+                                android:background="@color/white"
+                                android:textSize="20sp"
                                 android:textStyle="bold"/>
                         <TextView
                                 android:id="@+id/display_working_time"
@@ -123,17 +112,20 @@
                                 android:layout_height="match_parent"
                                 android:textAlignment="center"
                                 android:gravity="center_horizontal"
-                                android:textColor="@color/white"
-                                android:text=""
+                                android:layout_gravity="center_horizontal"
+                                android:textColor="@color/black"
+                                android:background="@color/white"
+                                android:text="--:--"
                                 android:textSize="30sp"
                                 android:textStyle="bold"/>
                     </LinearLayout>
 
                     <LinearLayout
+                            android:id="@+id/working_time_linear_layout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:background="@color/grey">
+                      >
                         <NumberPicker
                                 android:id="@+id/set_time_form"
                                 android:layout_width="0dp"
@@ -145,7 +137,6 @@
                                 android:ems="6"
                                 android:textSize="30sp"
                                 android:inputType="number"
-                                android:background="@color/grey"
                                 android:textAlignment="center"/>
 
                         <TextView
@@ -171,7 +162,6 @@
                                 android:textStyle="bold"
                                 android:textSize="30sp"
                                 android:inputType="number"
-                                android:background="@color/grey"
                                 android:textAlignment="center"/>
                         <TextView
                                 android:layout_width="0dp"
@@ -197,8 +187,9 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/rest_time"
                                 android:textAlignment="center"
-                                android:textColor="@color/white"
-                                android:textSize="30sp"
+                                android:textColor="@color/black"
+                                android:background="@color/white"
+                                android:textSize="20sp"
                                 android:textStyle="bold"/>
                         <TextView
                                 android:id="@+id/display_rest_time"
@@ -206,17 +197,19 @@
                                 android:layout_height="match_parent"
                                 android:textAlignment="center"
                                 android:gravity="center_horizontal"
-                                android:textColor="@color/white"
-                                android:text=""
+                                android:layout_gravity="center_horizontal"
+                                android:textColor="@color/black"
+                                android:text="--:--"
                                 android:textSize="30sp"
                                 android:textStyle="bold"/>
                     </LinearLayout>
 
                     <LinearLayout
+                            android:id="@+id/rest_time_linear_layout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:background="@color/grey">
+                     >
                         <NumberPicker
                                 android:id="@+id/rest_time_form"
                                 android:layout_width="0dp"
@@ -228,7 +221,6 @@
                                 android:textStyle="bold"
                                 android:textSize="30sp"
                                 android:inputType="number"
-                                android:background="@color/grey"
                                 android:text=""
                                 android:textAlignment="center"/>
                         <TextView
@@ -253,7 +245,6 @@
                                 android:textSize="30sp"
                                 android:layout_marginStart="5sp"
                                 android:inputType="number"
-                                android:background="@color/grey"
                                 android:text=""
                                 android:textAlignment="center"/>
                         <TextView
@@ -264,7 +255,7 @@
                                 android:text="sec"
                                 android:gravity="start"
                                 android:textColor="@color/black"
-                                android:background="@color/grey"
+
                                 android:textSize="20sp"/>
                     </LinearLayout>
             </LinearLayout>

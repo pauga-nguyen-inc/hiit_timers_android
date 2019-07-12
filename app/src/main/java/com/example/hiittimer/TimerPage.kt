@@ -25,21 +25,30 @@ class TimerPage : AppCompatActivity() {
         //------------------------------------------------------------------
 
 
-        var min  = 0
-        var sec  = 0
+        var workMin  = 0
+        var workSec  = 0
+        var restMin = 0
+        var restSec = 0
         var arr = emptyList<String>()
+        var restArr = emptyList<String>()
 
         val info = intent.extras
         if (info != null) {
             timer = info.getSerializable("timer") as Timer
+
             arr = timer.getWorkingTime().split(":")
-            min = Integer.parseInt(arr[0])
-            sec = Integer.parseInt(arr[1])
+            workMin = Integer.parseInt(arr[0])
+            workSec = Integer.parseInt(arr[1])
+
+            restArr = timer.getRestTime().split(":")
+            restMin = Integer.parseInt(restArr[0])
+            restSec = Integer.parseInt(restArr[1])
         }
 
 
         //-------------------------------------------------------------
-        val millisInFuture:Long = (min.toLong() * 60)*1000 + (sec * 1000) + 1000
+        val millisInFuture:Long = (workMin.toLong() * 60)*1000 + (workSec * 1000) + 1000
+        val millisInFutureRest : Long = (restMin.toLong() * 60)*1000 + (restSec * 1000) + 1000
         val countDownInterval:Long = 1000
 
 
@@ -110,29 +119,14 @@ class TimerPage : AppCompatActivity() {
                 var rsec = Integer.parseInt(array[0])
                 var rmin = Integer.parseInt(array[1].trim())
 
-                if ((rmin.toLong() * 60)*1000 + (rsec * 1000) == 0L){
-                    var i = 1
-                    while (i <= timer.getSetNumber().toString().toInt()) {
-                        timer(millisInFuture, countDownInterval).start()
-                        i++
-                        text_view_set_number.text = i.toString()
-                        Toast.makeText(this@TimerPage, "${text_view_set_number.text}", Toast.LENGTH_SHORT ).show()
-
-                    }
-                }
-
-
-
                 var i = 0
-                if ((rmin.toLong() * 60)*1000 + (rsec * 1000) == 0L){
-                    while (i <= timer.getSetNumber().toString().toInt()) {
-                        Toast.makeText(this@TimerPage, "${i}", Toast.LENGTH_SHORT).show()
-                        val newSet = i++
-                        text_view_set_number.text = newSet.toString()
-
+                if (i <= timer.getSetNumber().toString().toInt()) {
+                    if ((rmin.toLong() * 60)*1000 + (rsec * 1000) == 0L){
+                        text_view_set_number.text = i.toString()
+                        i++
+                        timer(millisInFuture, countDownInterval).start()
                     }
                 }
-
 
                 if (isPaused){
                     text_view.text = "${text_view.text}\nPaused"

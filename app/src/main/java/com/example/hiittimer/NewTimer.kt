@@ -1,10 +1,12 @@
 package com.example.hiittimer
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_edit_timer_info.*
 import kotlinx.android.synthetic.main.activity_new_timer.*
@@ -18,7 +20,25 @@ class NewTimer : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_timer)
 
-        numPicker()
+        val workLinLayout = findViewById<LinearLayout>(R.id.working_time_linear_layout)
+        val restLinLayout = findViewById<LinearLayout>(R.id.rest_time_linear_layout)
+        val dispWorkTime = findViewById<TextView>(R.id.display_working_time)
+        val dispRestTime = findViewById<TextView>(R.id.display_rest_time)
+        val hideKeyboard = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+        workLinLayout.visibility = View.GONE
+        restLinLayout.visibility = View.GONE
+
+        dispWorkTime.setOnClickListener{
+            workLinLayout.visibility = View.VISIBLE
+            hideKeyboard.hideSoftInputFromWindow(currentFocus.windowToken, InputMethodManager.SHOW_FORCED)
+            numPicker()
+        }
+        dispRestTime.setOnClickListener{
+            restLinLayout.visibility = View.VISIBLE
+            hideKeyboard.hideSoftInputFromWindow(currentFocus.windowToken, InputMethodManager.SHOW_FORCED)
+            numPicker()
+        }
     }
 
     fun cancelCreateTimer(view : View){
@@ -74,6 +94,9 @@ class NewTimer : AppCompatActivity() {
                 text.setText("${wminutePicker.value}:" + "%02d".format(newVal))
             } )
         }
+
+
+
 
         if (rminutePicker != null){
             rminutePicker.minValue = 0
